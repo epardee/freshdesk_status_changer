@@ -1,5 +1,5 @@
 ## freshdesk_status_changer
-Utility for changing certain ticket statuses in frreshdesk. Used for timed weekly operations.
+Utility for changing certain ticket statuses in freshdesk. Used for timed weekly operations.
 This script will take in a freshdesk view, search for any tickets with a start status, then change them to the final status.
 Can be run to revert the changes made on these tickets.
 
