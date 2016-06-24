@@ -77,7 +77,11 @@ class Freshdesk_Request_Maker():
             with open(path_to_changed_file, 'w') as changed_file:
                 for ticket in self.ticket_list:
                     try:
-                        make_request(ticket['display_id'])
+                        changed = False
+                        logger.debug("Checking if ticket status {} matches original status {}".format(ticket['status'], original_status))
+                        if str(ticket['status']) == str(original_status):
+                            make_request(ticket['display_id'])
+                            changed = True
                     except requests.exceptions.RequestException as e:
                         logger.warning("Requests exception when changing ticket status: {}".format(str(e)))
                         pass
@@ -89,7 +93,8 @@ class Freshdesk_Request_Maker():
 
                     else:
                         # write ticket number to changed file
-                        changed_file.write(str(ticket['display_id']) + '\n')
+                        if changed:
+                            changed_file.write(str(ticket['display_id']) + '\n')
 
 
 if __name__ == '__main__':

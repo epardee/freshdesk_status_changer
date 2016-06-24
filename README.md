@@ -13,7 +13,7 @@ Can be run to revert the changes made on these tickets.
 
 
 ###How to run:
-Required Arguments:
+**Required Arguments:**
 
 -a : Freshdesk API key. Ex: 1a2b3c4d5e6f
 
@@ -24,6 +24,9 @@ Required Arguments:
 -f : Ticket status to change from. Ex: 3 for 'pending'
 
 -t : Ticket status to change to. Ex: 7 for 'on hold'
+
+
+**Optional Arguments:**
 
 -r : Revert flag. Add this if you are reverting changes made from the previous run. This causes the script to only change tickets that were modified in the last run.
 
