@@ -6,9 +6,11 @@ import argparse
 import time
 
 """
+2: open
 3: pending
 4: resolved
 7: on hold
+5: closed
 """
 
 
@@ -99,7 +101,7 @@ class Freshdesk_Request_Maker():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        description="\nChanges tickets from one status to another in a specific Freshdesk view.", usage="python preserve_pending_tickets.py -a freshdesk_api_key -v view_number\nRun with -h flag for help.", formatter_class=argparse.RawDescriptionHelpFormatter)
+        description="\nChanges tickets from one status to another in a specific Freshdesk view.", usage="python preserve_pending_tickets.py -a freshdesk_api_key -n view_number\nRun with -h flag for help.", formatter_class=argparse.RawDescriptionHelpFormatter)
 
     parser.add_argument(
         '-a', '--api_key', help='API key for user profile in Freshdesk. This is a required argument.', required=True)
@@ -124,7 +126,7 @@ if __name__ == '__main__':
 
     # Set log file to save in the same directory as the script file
     base_folder = os.path.dirname(os.path.realpath(__file__))
-    path_to_changed_file = base_folder + '\\' + 'changed.txt'
+    path_to_changed_file = os.path.join(base_folder, 'changed.txt')
     args = vars(parser.parse_args())
 
     # Set appropriate verbosity of logging
@@ -139,7 +141,7 @@ if __name__ == '__main__':
         request_log_level = logging.WARNING
 
     # initialize the logger
-    logging.basicConfig(filename=base_folder + '\\' + 'log.txt', level=log_level,
+    logging.basicConfig(filename=os.path.join(base_folder, 'log.txt'), level=log_level,
                         format='%(asctime)s - %(levelname)s - %(message)s')
     logger = logging.getLogger(__name__)
     logging.getLogger("requests").setLevel(request_log_level)
