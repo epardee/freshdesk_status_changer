@@ -34,15 +34,22 @@ Can be run to revert the changes made on these tickets.
 
 -vv : Enable very verbose logging. Beware of log file size!
 
+## This script requires "requests": http://docs.python-requests.org/, 
+## "logging": https://pypi.io/project/logging and "argparse": https://pypi.io/project/argparse
+## To install: pip install requests logging argparse
 
 ###Example usage:
 
 **Friday evening** - change all 'Pending' tickets in view to 'On Hold' so they do not close over the weekend:
 
-*python preserve_pending_tickets.py -a 1a2b3c4d5e6f -c contoso -v 123456789 -f 3 -t 7*
+*python preserve_pending_tickets.py -a 1a2b3c4d5e6f -c contoso -n 123456789 -f 3 -t 7*
 
+
+Change all 'Open' tickets in view to 'Closed' because they didn't close on Zendesk import:
+
+*python preserve_pending_tickets.py -a 1a2b3c4d5e6f -c contoso -n 123456789 -f 2 -t 5*
 
 
 **Monday Morning** - change those tickets we altered back to 'Pending' to reset the autoclose timer
 
-*python preserve_pending_tickets.py -a 1a2b3c4d5e6f -c contoso -v 123456789 -f 7 -t 3 -r*
+*python preserve_pending_tickets.py -a 1a2b3c4d5e6f -c contoso -n 123456789 -f 7 -t 3 -r*
