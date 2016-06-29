@@ -34,9 +34,15 @@ Can be run to revert the changes made on these tickets.
 
 -vv : Enable very verbose logging. Beware of log file size!
 
-## This script requires "requests": http://docs.python-requests.org/, 
-## "logging": https://pypi.io/project/logging and "argparse": https://pypi.io/project/argparse
-## To install: pip install requests logging argparse
+** This script requires **
+
+- "requests": http://docs.python-requests.org/, 
+
+- "logging": https://pypi.io/project/logging 
+
+- "argparse": https://pypi.io/project/argparse
+
+- To install: pip install requests logging argparse
 
 ###Example usage:
 
